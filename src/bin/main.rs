@@ -2,6 +2,7 @@ extern crate structopt;
 extern crate colored;
 
 use std::io::prelude::*;
+use std::str::FromStr;
 
 use structopt::StructOpt;
 
@@ -10,6 +11,7 @@ use colored::Colorize;
 use rsc::lexer::*;
 use rsc::parser::*;
 use rsc::computer::*;
+use rsc::bignum::*;
 
 #[derive(StructOpt)]
 #[structopt(about = "A scientific calculator for the terminal.\nManual: https://github.com/asmoaesl/rsc/wiki")]
@@ -26,6 +28,12 @@ fn main() {
     let opt = Opt::from_args();
 
     let mut computer = Computer::new(std::f64::consts::PI, std::f64::consts::E);
+
+    let mut big_num = BigNum::from_str("3.14159").unwrap();
+    println!("{}", big_num);
+    big_num.add_left(&[2]);
+    big_num.add_right(&[9]); // 6.04159
+    println!("{}", big_num);
 
     loop {
         print!("{}", if opt.no_color { ">".normal() } else { ">".blue() });

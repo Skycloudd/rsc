@@ -57,6 +57,7 @@ extern crate test;
 pub mod lexer;
 pub mod parser;
 pub mod computer;
+pub mod bignum;
 
 use crate::computer::Num;
 use std::ops::*;

@@ -122,7 +122,7 @@ fn print_help(no_color: bool) {
     println!("\nExamples");
     println!("\t12.3(0.7)");
     println!("\t|-9| + 3!");
-    println!("\tx = abs(5)");
+    println!("\tx = abs(-5)");
     println!("\t-x^4");
 }
 
@@ -158,7 +158,7 @@ fn print_vars<N: Num + Display>(interpreter: &Interpreter<N>, no_color: bool) {
         println!(
             "{}",
             if no_color {
-                fmt.red().clear().to_string()
+                fmt.normal().to_string()
             } else {
                 fmt
             }

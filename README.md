@@ -2,8 +2,6 @@ RSCALC, the Calculator for Rust Code
 =================================
 ![](https://img.shields.io/crates/l/rsc.svg) ![](https://img.shields.io/badge/status-stable-blue.svg)
 
-**New**: crate updated to 3.0, read the [Changelog](CHANGELOG.md).
-
 **RSCALC is a handwritten scientific calculator for interpreting equations inside strings.** RSCALC is designed to do a single
 thing very well, enabling anyone to extend it with more features.
 

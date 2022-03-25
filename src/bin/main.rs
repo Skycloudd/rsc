@@ -17,7 +17,7 @@ struct Opt {
     expr: Option<String>,
     #[structopt(short = "t", long = "tokens", help = "Prints the tokens")]
     tokens: bool,
-    #[structopt(short = "e", long = "expr", help = "Prints the expression tree")]
+    #[structopt(short = "s", long = "syntax", help = "Prints the syntax tree")]
     bexpr: bool,
     #[structopt(short = "v", long = "vars", help = "Prints variable map")]
     vars: bool,

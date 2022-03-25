@@ -2,9 +2,9 @@
 name = "rsc"
 version = "3.0.0"
 edition = "2018"
-authors = ["Luke I. Wilson <thelukaswils@gmail.com>"]
+authors = ["Luke I. Wilson <thelukaswils@gmail.com>", "Skycloudd"]
 description = "A fast calculator for solving scientific and algebraic math equations in strings."
-repository = "https://github.com/fivemoreminix/rsc"
+repository = "https://github.com/Skycloudd/rsc"
 readme = "README.md"
 keywords = ["scientific", "calculator", "parser", "expression"]
 categories = ["command-line-utilities", "parsing", "science"]

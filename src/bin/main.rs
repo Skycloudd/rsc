@@ -112,7 +112,7 @@ fn print_help(no_color: bool) {
         println!(
             "{:<10} {}",
             if no_color {
-                name.green().clear()
+                name.normal()
             } else {
                 name.green()
             },
@@ -144,8 +144,16 @@ fn print_vars<N: Num + Display>(interpreter: &Interpreter<N>, no_color: bool) {
     for (id, val) in vars {
         let fmt;
         match val {
-            Variant::Num(n) => fmt = format!("{} = {}", &id.green(), n.clone()),
-            Variant::Function(_) => fmt = format!("{}(..)", &id.green()),
+            Variant::Num(n) => {
+                fmt = format!(
+                    "{} = {}",
+                    if no_color { id.normal() } else { id.green() },
+                    n.clone()
+                )
+            }
+            Variant::Function(_) => {
+                fmt = format!("{}(..)", if no_color { id.normal() } else { id.green() })
+            }
         }
         println!(
             "{}",

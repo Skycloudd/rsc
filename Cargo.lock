@@ -420,8 +420,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "rsc"
-version = "3.0.0"
+name = "rscalc"
+version = "3.1.0"
 dependencies = [
  "colored",
  "num",

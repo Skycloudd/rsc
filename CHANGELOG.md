@@ -36,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 let mut map = HashMap::<String, &'a Fn(f64) -> f64>::new();
 map.insert("sqrt".to_owned(), &|n| n.sqrt());
 ```
-* RSC is fully generic, now! Types that can support addition, subtraction, and a couple functions necessary in the `Num` trait can be lexed, parsed, and computed with no changes to the RSC source code.
+* RSCALC is fully generic, now! Types that can support addition, subtraction, and a couple functions necessary in the `Num` trait can be lexed, parsed, and computed with no changes to the RSCALC source code.
 * Getting the previous answer with the new `ans` variable. `ans` does not exist until you've run a calculation on a Computer already.
 * Factorial: `5! = 120`
 

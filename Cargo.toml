@@ -1,10 +1,10 @@
 [package]
-name = "rsc"
+name = "rscalc"
 version = "3.1.0"
 edition = "2018"
 authors = ["Luke I. Wilson <thelukaswils@gmail.com>", "Skycloudd"]
 description = "A fast calculator for solving scientific and algebraic math equations in strings."
-repository = "https://github.com/Skycloudd/rsc"
+repository = "https://github.com/Skycloudd/rscalc"
 readme = "README.md"
 keywords = ["scientific", "calculator", "parser", "expression"]
 categories = ["command-line-utilities", "parsing", "science"]
@@ -14,7 +14,7 @@ license = "MIT"
 path = "src/lib.rs"
 
 [[bin]]
-name = "rsc"
+name = "rscalc"
 path = "src/bin/main.rs"
 required-features = ["executable"]
 

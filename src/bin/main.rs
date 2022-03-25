@@ -3,7 +3,7 @@ use rustyline::error::ReadlineError;
 use rustyline::Editor;
 use structopt::StructOpt;
 
-use rsc::{
+use rscalc::{
     parse, tokenize, InterpretError, Interpreter, Num, ParseError, ParseErrorCode, TokenizeError,
     Variant,
 };
@@ -49,7 +49,7 @@ fn main() {
 
     let mut rl = Editor::<()>::new();
 
-    println!("RSC interactive expression interpreter.");
+    println!("RSCALC interactive expression interpreter.");
     println!("Try \"help\" for commands and examples.");
 
     loop {
@@ -99,7 +99,7 @@ fn main() {
 }
 
 const COMMANDS: [(&str, &str); 5] = [
-    ("quit|exit", "Close RSC"),
+    ("quit|exit", "Close RSCALC"),
     ("help", "Show this help information"),
     ("vars", "Display all of the active variables"),
     ("clear", "Clear prior output"),

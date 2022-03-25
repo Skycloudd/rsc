@@ -1,18 +1,18 @@
-RSC, the Calculator for Rust Code
+RSCALC, the Calculator for Rust Code
 =================================
 ![](https://img.shields.io/crates/l/rsc.svg) ![](https://img.shields.io/badge/status-stable-blue.svg)
 
 **New**: crate updated to 3.0, read the [Changelog](CHANGELOG.md).
 
-**RSC is a handwritten scientific calculator for interpreting equations inside strings.** RSC is designed to do a single
+**RSCALC is a handwritten scientific calculator for interpreting equations inside strings.** RSCALC is designed to do a single
 thing very well, enabling anyone to extend it with more features.
 
-RSC intends to beat Wirth's Law. **Therefore, RSC will not receive many additions.** It will still receive updates with
+RSCALC intends to beat Wirth's Law. **Therefore, RSCALC will not receive many additions.** It will still receive updates with
 relation to efficiency.
 
 ## Library
 ```rust
-use rsc::{tokenize, parse, Interpreter};
+use rscalc::{tokenize, parse, Interpreter};
 
 // Maybe you write a wrapper function
 fn evaluate(input: &str, interpreter: &mut Interpreter<f64>) -> Result<f64, ()> {
@@ -33,7 +33,7 @@ fn evaluate(input: &str, interpreter: &mut Interpreter<f64>) -> Result<f64, ()> 
 fn main() {
     // Constructs an f64 interpreter with included variables
     let mut interpreter = Interpreter::default();
-    
+
     evaluate("5^2", &mut interpreter); // prints "25"
     evaluate("x = 3", &mut interpreter); // prints "3"
     evaluate("x(3) + 1", &mut interpreter); // prints "10"
@@ -42,14 +42,14 @@ fn main() {
 
 Variables are stored in the `Interpreter`:
 ```rust
-use rsc::{tokenize, parse, Interpreter, Variant, InterpretError};
+use rscalc::{tokenize, parse, Interpreter, Variant, InterpretError};
 
 // assume you still had your evaluate function above
 
 fn main() {
     // Create a completely empty interpreter for f64 calculations
     let mut i = Interpreter::<f64>::new();
-    
+
     // Create some variables
     i.set_var(String::from("pi"), Variant::Num(std::f64::consts::PI));
     i.set_var(String::from("double"), Variant::Function(|name, args| {
@@ -61,7 +61,7 @@ fn main() {
             Ok(args[0] * 2) // get the only argument and double it
         }
     }));
-    
+
     evaluate("double(pi)", &mut i); // prints "6.283185307179586"
 }
 ```
@@ -70,7 +70,7 @@ Because it can be redundant checking that functions received the correct number 
 I made a helper function called `ensure_arg_count`. The above function redefined:
 
 ```rust
-use rsc::ensure_arg_count;
+use rscalc::ensure_arg_count;
 
 i.set_var(String::from("double"), Variant::Function(|name, args| {
     // return Err if args are not within the min and max count
@@ -80,7 +80,7 @@ i.set_var(String::from("double"), Variant::Function(|name, args| {
 ```
 
 ## Executable
-### First you might need to build RSC as an executable
+### First you might need to build RSCALC as an executable
 ```shell
 cargo build --release --features=executable
 ```
@@ -88,7 +88,7 @@ The `executable` feature is required to tell the crate to bring in certain depen
 
 ### Usage
 ```shell
-RSC interactive expression interpreter.
+RSCALC interactive expression interpreter.
 Try "help" for commands and examples.
 >sqrt(15+3)
 :4.242640687119285
@@ -117,14 +117,14 @@ pi = 3.141592653589793
 tau = 6.283185307179586
 ```
 
-Expressions can be passed to rsc directly:
+Expressions can be passed to rscalc directly:
 ```shell
-rsc "12/sqrt(128)" > result.txt
+rscalc "12/sqrt(128)" > result.txt
 ```
 
 There are various flags you can pass. Try:
 ```shell
-rsc -tev
+rscalc -tev
 ```
 
 ## Notes About Performance
@@ -134,7 +134,7 @@ rsc -tev
  * Performance improvement PRs are very much welcomed and probably easy!
 
 ## Stability
-RSC will not have any major changes to its syntax. It will remain consistent for a long time. It is up to forkers to make different tastes of RSC. It will also forever keep the same open-source permissions.
+RSCALC will not have any major changes to its syntax. It will remain consistent for a long time. It is up to forkers to make different tastes of RSCALC. It will also forever keep the same open-source permissions.
 
 ## License
-RSC is MIT licensed. RSC will always remain free to modify and use without attribution.
+RSCALC is MIT licensed. RSCALC will always remain free to modify and use without attribution.

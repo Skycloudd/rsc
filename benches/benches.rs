@@ -2,7 +2,7 @@
 
 extern crate test;
 
-use rsc::{parse, tokenize, Interpreter, Variant};
+use rscalc::{parse, tokenize, Interpreter, Variant};
 use test::{black_box, Bencher};
 
 const SHORT_STR: &str = "5.324 * 54(pad)";

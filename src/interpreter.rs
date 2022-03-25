@@ -130,6 +130,14 @@ impl Default for Interpreter<f64> {
         vars.insert(String::from("e"), Variant::Num(std::f64::consts::E));
         vars.insert(String::from("tau"), Variant::Num(std::f64::consts::TAU));
         vars.insert(
+            String::from("phi"),
+            Variant::Num(1.61803398874989484820_f64),
+        );
+        vars.insert(String::from("lightspeed"), Variant::Num(299792458_f64)); // the speed of light in vacuum in m/s
+        vars.insert(String::from("planck"), Variant::Num(6.62607015e-34)); // planck constant in J/Hz
+        vars.insert(String::from("planckbar"), Variant::Num(1.054571817e-34)); // reduced planck constant in Js
+        vars.insert(String::from("gravconst"), Variant::Num(6.67430e-11)); // gravitational constant in m^3/kg/s^2
+        vars.insert(
             String::from("abs"),
             Variant::Function(|id, args| {
                 ensure_arg_count(1, 1, args.len(), id)?;

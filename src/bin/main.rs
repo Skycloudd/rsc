@@ -1,6 +1,6 @@
 use colored::Colorize;
 use rustyline::error::ReadlineError;
-use rustyline::Editor;
+use rustyline::{Config, EditMode, Editor};
 use structopt::StructOpt;
 
 use rscalc::{
@@ -23,6 +23,10 @@ struct Opt {
     vars: bool,
     #[structopt(long = "no-color", help = "Prevents colored text")]
     no_color: bool,
+    #[structopt(short = "E", long = "emacs", help = "Use Emacs key bindings")]
+    emacs: bool,
+    #[structopt(short = "V", long = "vi", help = "Use Vi key bindings")]
+    vim: bool,
 }
 
 fn main() {
@@ -47,7 +51,15 @@ fn main() {
         std::process::exit(1);
     }
 
-    let mut rl = Editor::<()>::new();
+    let mut config = Config::builder();
+
+    if opt.emacs {
+        config = config.edit_mode(EditMode::Emacs);
+    } else if opt.vim {
+        config = config.edit_mode(EditMode::Vi);
+    }
+
+    let mut rl = Editor::<()>::with_config(config.build());
 
     println!("RSCALC interactive expression interpreter.");
     println!("Try \"help\" for commands and examples.");

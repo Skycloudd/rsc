@@ -204,7 +204,16 @@ fn evaluate<N: Num + Display>(
 
                     match interpreter.eval(&expr) {
                         Ok(result) => {
-                            println!("{}{}", success_prefix, result);
+                            // println!("{}{}", success_prefix, result);
+                            println!(
+                                "{} {}",
+                                if bno_color {
+                                    success_prefix.normal()
+                                } else {
+                                    success_prefix.green()
+                                },
+                                result
+                            );
                         }
                         Err(err) => {
                             let fmt = format!("{}", display_interpret_error(&err));

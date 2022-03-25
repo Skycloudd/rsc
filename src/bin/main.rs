@@ -61,7 +61,10 @@ fn main() {
                 "> ".blue()
             }
         ]) {
-            Ok(line) => line,
+            Ok(line) => {
+                rl.add_history_entry(line.as_str());
+                line
+            }
             Err(ReadlineError::Interrupted) => break,
             Err(ReadlineError::Eof) => break,
             Err(err) => {

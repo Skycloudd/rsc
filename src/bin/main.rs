@@ -1,5 +1,6 @@
 use colored::Colorize;
-use std::io::prelude::*;
+use rustyline::error::ReadlineError;
+use rustyline::Editor;
 use structopt::StructOpt;
 
 use rsc::{
@@ -46,23 +47,28 @@ fn main() {
         std::process::exit(1);
     }
 
+    let mut rl = Editor::<()>::new();
+
     println!("RSC interactive expression interpreter.");
     println!("Try \"help\" for commands and examples.");
 
     loop {
-        print!(
+        let buffer = match rl.readline(&format![
             "{}",
             if opt.no_color {
                 "> ".normal()
             } else {
                 "> ".blue()
             }
-        );
-        std::io::stdout().flush().unwrap();
-
-        let mut buffer = String::new();
-        std::io::stdin().read_line(&mut buffer).unwrap();
-        buffer = buffer.trim().to_owned();
+        ]) {
+            Ok(line) => line,
+            Err(ReadlineError::Interrupted) => break,
+            Err(ReadlineError::Eof) => break,
+            Err(err) => {
+                eprintln!("Error: {:?}", err);
+                continue;
+            }
+        };
 
         if &buffer[..] == "quit" || &buffer[..] == "exit" {
             break;

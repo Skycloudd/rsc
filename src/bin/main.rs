@@ -53,9 +53,9 @@ fn main() {
         print!(
             "{}",
             if opt.no_color {
-                ">".normal()
+                "> ".normal()
             } else {
-                ">".blue()
+                "> ".blue()
             }
         );
         std::io::stdout().flush().unwrap();

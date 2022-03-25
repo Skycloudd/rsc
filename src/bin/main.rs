@@ -80,9 +80,7 @@ fn main() {
         } else if &buffer[..] == "vars" {
             print_vars(&interpreter, opt.no_color);
         } else if &buffer[..] == "clear" {
-            for _ in 0..100 {
-                println!();
-            }
+            print!("\x1Bc");
             continue;
         } else if buffer.starts_with(":") {
             continue;

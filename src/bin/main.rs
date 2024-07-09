@@ -1,6 +1,6 @@
 use colored::Colorize;
 use rustyline::error::ReadlineError;
-use rustyline::{Config, EditMode, Editor};
+use rustyline::{Config, DefaultEditor, EditMode};
 use structopt::StructOpt;
 
 use rscalc::{
@@ -59,7 +59,7 @@ fn main() {
         config = config.edit_mode(EditMode::Vi);
     }
 
-    let mut rl = Editor::<()>::with_config(config.build());
+    let mut rl = DefaultEditor::with_config(config.build()).unwrap();
 
     println!("RSCALC interactive expression interpreter.");
     println!("Try \"help\" for commands and examples.");
@@ -74,7 +74,7 @@ fn main() {
             }
         ]) {
             Ok(line) => {
-                rl.add_history_entry(line.as_str());
+                rl.add_history_entry(line.as_str()).unwrap();
                 line
             }
             Err(ReadlineError::Interrupted) => break,
